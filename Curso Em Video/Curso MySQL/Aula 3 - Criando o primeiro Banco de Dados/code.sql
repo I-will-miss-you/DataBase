@@ -1,6 +1,8 @@
 
+/*Cria base de dados "cadastro"*/
 create database cadastro;
 
+/*Cria tabela "pessoas"*/
 create table pessoas(
 nome varchar(30),
 idade tinyint,
@@ -10,13 +12,17 @@ altura float,
 nacionalidade varchar(20)
 );
 
-describe pessoas; #descreve a tabela pessoas
+/*descreve a tabela pessoas*/
+describe pessoas; 
 
-show databases; #mostra todas a bases de dados 
+/*mostra todas a bases de dados */
+show databases; 
 
 use cadastro; 
 
-status; #mostra os banco de dados que esta aberto
+/*mostra os banco de dados que esta aberto*/
+status;
 
-show tables; #mostra todas as tabela do banco de dados
+/*mostra todas as tabela do banco de dados*/
+show tables;
 
