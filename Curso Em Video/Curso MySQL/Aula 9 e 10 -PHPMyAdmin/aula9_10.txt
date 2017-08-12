@@ -1,0 +1,18 @@
+-- No terminal
+
+* Para ver todas as Bases de Dados
+- show databases; 
+
+* Verificar a Base de Dados aberta
+- status;
+
+* Abrir uma dada Base de Dados
+- use cadastro;
+
+* Ver as tabelas
+- show tables;
+
+* Ver a estrutura de uma dada tabela
+- describe cursos;
+
+
