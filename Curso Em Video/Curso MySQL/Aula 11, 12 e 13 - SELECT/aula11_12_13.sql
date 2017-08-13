@@ -163,3 +163,43 @@ where ano = '2016';
 select avg(totaulas)
 from cursos;
 
+-- ------------------------
+--  GROUP BY
+-- ------------------------
+-- Saber quantos cursos existem com determinado numero de aulas
+select totaulas, count(*)
+from cursos
+group by totaulas;
+
+-- Quantos cursos existem por cada grupo, sabendo que:
+-- Total de aulas é 30
+-- Agrupado por carga
+select carga, count(*)
+from cursos
+where totaulas = 30
+group by carga;
+
+-- Quantos cursos existem por cada grupo, sabendo que:
+-- Total de aulas é 30
+-- Agrupado por carga
+-- Mostrar apenas o resultados em que o contador seja maior que 3
+select carga, count(*)
+from cursos
+where totaulas = 30
+group by carga 
+having count(nome) > 3;
+
+-- Outro exemplos de utilização:
+select ano, count(*) contador
+from cursos
+where totaulas > 30
+group by ano
+having ano > 2013
+order by contador desc;
+--
+--
+select carga, count(*) 
+from cursos
+where ano > 2015
+group by carga
+having carga > (select avg(carga) from cursos);

@@ -59,14 +59,16 @@ SELECT
 FROM
     gafanhotos
 WHERE
-    sexo = 'M' AND nacionalidade = 'Brasil';
+    sexo = 'M' AND nacionalidade = 'Brasil'
+;
 
 -- ex 7
 -- Qual é a média de peso dos gafanhotos cadastrados
 SELECT 
     avg(peso) 'Peso médio'
 FROM
-    gafanhotos;
+    gafanhotos
+;
 
 -- ex 8
 -- Qual é o menor peso entre as gafanhotas mulheres que nasceram fora do Brasil e entre 01/Jan/1990 e 31/Dez/2000?
@@ -77,7 +79,8 @@ FROM
 WHERE
     sexo = 'F' AND nacionalidade != 'Brasil'
         AND nascimento > '1990-1-1'
-        AND nascimento < '2000-31-12';
+        AND nascimento < '2000-31-12'
+;
 
 
 -- ex 9
@@ -87,4 +90,49 @@ SELECT
 FROM
     gafanhotos
 WHERE
-    sexo = 'F' AND altura > '1.90';
+    sexo = 'F' AND altura > '1.90'
+;
+
+-- ex 10
+-- Uma lista com as profissões dos gafanhotos e seus respectivos quantitativos
+SELECT 
+    profissao, COUNT(*)
+FROM
+    gafanhotos
+GROUP BY profissao
+ORDER BY profissao;
+
+-- ex 11
+-- Quantos gafanhotos homens e quantas mulheres nasceram após 01/Jan/2005?
+SELECT 
+    sexo, COUNT(*)
+FROM
+    gafanhotos
+WHERE
+    nascimento > '2005-01-01'
+GROUP BY sexo;
+
+-- ex 12
+-- Uma lista com os gafanhotos que nasceram fora do Brasil, mostrando o páis de origem e o total de pessoas nascidas lá. Só nos interessam os países que tiverem mais de 3 gafanhotos com essa nacionalidade
+SELECT 
+    nacionalidade, COUNT(*) quantidade
+FROM
+    gafanhotos
+WHERE
+    nacionalidade != 'Brasil'
+GROUP BY nacionalidade
+HAVING quantidade > 3;
+
+-- ex 13
+-- Uma lista agrupada pela altura dos gafanhotos, mostrando quantas pessoas pesam mais de 100kg e que estão acima da média de altura de todos os cadastrados
+SELECT 
+    altura, COUNT(*) quantidade
+FROM
+    gafanhotos
+WHERE
+    peso > 100
+        AND altura > (SELECT 
+            AVG(altura)
+        FROM
+            gafanhotos)
+GROUP BY altura;
