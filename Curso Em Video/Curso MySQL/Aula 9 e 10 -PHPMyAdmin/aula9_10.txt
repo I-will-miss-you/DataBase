@@ -15,4 +15,8 @@
 * Ver a estrutura de uma dada tabela
 - describe cursos;
 
+* Ver o comando usado para criar uma dada tabela
+- show create table amigos;
 
+* Ver o comando usado para criar o Banco de Dados
+- show create database exemplo;
